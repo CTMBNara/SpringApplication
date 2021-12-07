@@ -1,22 +1,23 @@
 package com.example.springapplication.service
 
 import com.example.springapplication.domain.BankAccount
+import kotlinx.coroutines.flow.Flow
 
 interface BankAccountService {
-    fun save(entity: BankAccount): BankAccount
-    fun saveAll(entities: Iterable<BankAccount>): Iterable<BankAccount>
-    fun generateBankAccounts(count: Long): Iterable<BankAccount>
+    suspend fun save(entity: BankAccount): BankAccount
+    suspend fun saveAll(entities: Iterable<BankAccount>): Flow<BankAccount>
+    suspend fun generateBankAccounts(count: Long): Flow<BankAccount>
 
-    fun findAll(): Iterable<BankAccount>
-    fun findAllById(ids: Iterable<String>): Iterable<BankAccount>
-    fun findById(id: String): BankAccount?
+    suspend fun findAll(): Flow<BankAccount>
+    suspend fun findAllById(ids: Iterable<String>): Flow<BankAccount>
+    suspend fun findById(id: String): BankAccount?
 
-    fun delete(entity: BankAccount)
-    fun deleteAll()
-    fun deleteAll(entities: Iterable<BankAccount>)
-    fun deleteAllById(ids: Iterable<String>)
-    fun deleteById(id: String)
+    suspend fun delete(entity: BankAccount)
+    suspend fun deleteAll()
+    suspend fun deleteAll(entities: Iterable<BankAccount>)
+    suspend fun deleteAllById(ids: Iterable<String>)
+    suspend fun deleteById(id: String)
 
-    fun count(): Long
-    fun existsById(id: String): Boolean
+    suspend fun count(): Long
+    suspend fun existsById(id: String): Boolean
 }
